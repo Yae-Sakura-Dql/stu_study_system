@@ -1,36 +1,22 @@
-```text
-.
-├── README.md
-└── Stu
-    ├── pom.xml
-    ├── src
-    │ ├── main
-    │ │ ├── java
-    │ │ │ └── com
-    │ │ │   └── dql
-    │ │ │       └── stu
-    │ │ │           ├── config 配置包
-    │ │ │           ├── controller controller包
-    │ │ │           ├── dict 字典数据
-    │ │ │           ├── exception  自定义异常
-    │ │ │           ├── interceptor  拦截器
-    │ │ │           ├── mapper mybatis-plus:mapper
-    │ │ │           ├── message 自定义返回信息
-    │ │ │           ├── model 模型BO
-    │ │ │           ├── service
-    │ │ │           │ ├── func service接口
-    │ │ │           │ └── impl service实现
-    │ │ │           ├── stuApplication.java 根运行类
-    │ │ │           ├── tmodel 瞬时模型TO
-    │ │ │           └── utils 工具包
-    │ │ └── resources
-    │ │   ├── application-dev.yaml 配置文件
-    │ │   ├── application-test.yaml 配置文件
-    │ │   ├── application.yaml 配置文件
-    │ │   ├── mapper mybatis-plus:mapper对应的xml
-    │ │   ├── static
-    │ │   │ ├── css web的css文件
-    │ │   │ └── js web的js文件
-    │ │   └── templates web的html文件
-    │ └── test 测试包
-```
+# 详设链接
+
+- https://www.yuque.com/docs/share/a7dc7994-57b7-4492-9c1d-dc91a04a08ff?# 《导师辅助系统》
+
+# 项目结构
+
+- https://www.yuque.com/docs/share/fee71b56-6e31-41db-a4da-dbb1a4ba8f1f?# 《项目结构》
+
+# 项目环境
+
+- IntelliJ IDEA 2021.1.3 (Ultimate Edition)
+- java version "1.8.0_291"
+- MYSQL 5.7.34 (sql文件位置:resources/sql/stu_system.sql)
+- Redis 6.26
+- 依赖环境在pom中
+- 环境配置在application.yaml中
+
+# 账号
+
+- 管理员 : root 123456
+- 教师 : tea1 123456 其余在数据库中查看
+- 学生 : stu1 123456 其余在数据库中查看
