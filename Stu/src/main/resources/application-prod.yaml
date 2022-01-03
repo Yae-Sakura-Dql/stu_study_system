@@ -1,6 +1,6 @@
 #  端口号
 server:
-  port: 8090
+  port: 8080
 spring:
   application:
     name: Stu
@@ -16,7 +16,7 @@ spring:
   #    redis配置
   redis:
     host: localhost
-    port: 6380
+    port: 6379
     database: 0
     password: 123456
     lettuce:
