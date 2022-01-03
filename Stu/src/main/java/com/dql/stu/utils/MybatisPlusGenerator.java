@@ -68,8 +68,7 @@ public class MybatisPlusGenerator {
 //        dsc.setUsername("root");
         dsc.setUsername("stu_system");
         dsc.setPassword("123456");
-//        dsc.setUrl("jdbc:mysql://localhost:3306/stu_system?serverTimezone=UTC");
-        dsc.setUrl("jdbc:mysql://175.24.229.51:3306/stu_system?serverTimezone=UTC");
+        dsc.setUrl("jdbc:mysql://localhost:3306/stu_system?serverTimezone=UTC");
         mpg.setDataSource(dsc);
 
         // 策略配置
