@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>分组信息修改</title>
+
+    <link th:insert="preset.html">
+    <link rel="stylesheet" type="text/css" href="../static/css/edit-group.css" th:href="@{/css/edit-group.css}">
+</head>
+<body>
+<div class="auth">
+    <div class="title-info">
+        <div class="bg"></div>
+        <img class="tb"
+             src="https://ncstatic.clewm.net/rsrc/2020/1016/02/4757e4910cb527fc040d019a93ded74f.png?x-oss-process=image/resize,w_750/format,gif/sharpen,100/quality,Q_80/interlace,1/auto-orient,1"
+             alt="书籍">
+        <h2 class="title">分组管理</h2>
+    </div>
+</div>
+<form>
+    <div class="layui-form-item">
+        <label class="layui-form-label">组名：</label>
+        <div class="layui-input-block">
+            <input type="text" th:value="${groupStudentTO.getGroupName()}" th:id="${groupStudentTO.getTeacherId()}"
+                   required class="groupName layui-input-inline ">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label-col">
+            <div class="layui-input-block">
+                <div th:each="selected:${groupStudentTO.getSelectedStudentBOList()}">
+                    <input type="checkbox" th:text="${selected.getNickName()}" checked th:value="${selected.getId()}">
+                </div>
+                <div th:each="noSelected:${groupStudentTO.getNoSelectedStudentBOList()}">
+                    <input type="checkbox" th:text="${noSelected.getNickName()}" th:value="${noSelected.getId()}">
+                </div>
+
+            </div>
+        </label>
+    </div>
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <label>
+                <input type="text" class="oldGroupName" th:value="${groupStudentTO.getOldGroupName()}"
+                       style="display: none">
+            </label>
+            <input type="button" value="提交" class="change layui-btn">
+            <a href="#" th:href="@{/toTeacher/1}" class="layui-btn">返回</a>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="../static/js/edit-group.js" th:src="@{/js/edit-group.js}"></script>
+</body>
+</html>

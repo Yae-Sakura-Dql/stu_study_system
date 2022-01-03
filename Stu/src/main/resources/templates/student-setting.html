@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息修改</title>
+    <link th:insert="preset.html">
+    <link rel="stylesheet" href="../static/css/student-setting.css" th:href="@{/css/student-setting.css}">
+</head>
+<body>
+<!--头部-->
+<div class="auth">
+    <div class="title-info">
+        <div class="bg"></div>
+        <img class="tb"
+             src="https://ncstatic.clewm.net/rsrc/2020/1016/02/4757e4910cb527fc040d019a93ded74f.png?x-oss-process=image/resize,w_750/format,gif/sharpen,100/quality,Q_80/interlace,1/auto-orient,1"
+             alt="书籍">
+        <h2 class="title">学生管理</h2>
+    </div>
+    <form class="layui-form">
+        <label>
+            <input type="text" class="id" th:value="${studentBO.getId()}" style="display: none">
+        </label>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名:</label>
+            <div class="layui-input-inline">
+                <input type="text" th:value="${studentBO.getNickName()}" class="nickName layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机号: </label>
+            <div class="layui-input-inline">
+                <input type="tel" th:value="${studentBO.getPhone()}" class="phone layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱:</label>
+            <div class="layui-input-inline">
+                <input type="email" th:value="${studentBO.getEmail()}" class="email layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">班级:</label>
+            <div class="layui-input-inline">
+                <input type="text" th:value="${studentBO.getClassroom()}"
+                       class="layui-input">
+            </div>
+        </div>
+
+    </form>
+    <div class="cen">
+        <div class="layui-form-item">
+            <label class="la layui-form-label">
+                <button value="提交" class="submit layui-btn layui-btn-radius">提交</button>
+            </label>
+            <label class="la layui-form-label">
+                <button value="返回" class="goBack layui-btn layui-btn-radius">返回</button>
+            </label>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/js/student-setting.js" th:src="@{/js/student-setting.js}"></script>
+</body>
+</html>

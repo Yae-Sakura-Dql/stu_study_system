@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <link th:insert="preset.html">
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css"
+          th:href="@{/css/login.css}">
+</head>
+<body>
+<div class="auth">
+    <div class="title-info">
+        <div class="bg"></div>
+        <img class="tb" src="https://ncstatic.clewm.net/rsrc/2020/1016/02/4757e4910cb527fc040d019a93ded74f.png?x-oss-process=image/resize,w_750/format,gif/sharpen,100/quality,Q_80/interlace,1/auto-orient,1"
+             alt="书籍" >
+        <h2 class="title">学业导师管理</h2>
+    </div>
+    <form >
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名: </label>
+            <div class="layui-input-inline">
+                <input type="text" class="username layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码:</label>
+            <div class="layui-input-inline">
+                <input type="password" class="password layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色：</label>
+            <div class="layui-input-block">
+                <select class="userRoleDict" >
+                    <option value="">请选择一个角色</option>
+                    <option value="TEACHER">教师</option>
+                    <option value="STUDENT">学生</option>
+                    <option value="ADMIN">管理员</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="la layui-form-label">
+                <input type="button" value="登录" class="login layui-btn layui-btn-radius">
+            </label>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="../static/js/login.js" th:src="@{/js/login.js}"></script>
+</body>
+</html>

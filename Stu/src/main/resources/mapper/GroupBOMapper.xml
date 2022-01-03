@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dql.stu.mapper.GroupBOMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dql.stu.model.GroupBO">
+        <id column="id" property="id"/>
+        <result column="group_name" property="groupName"/>
+        <result column="teacher_id" property="teacherId"/>
+        <result column="student_id" property="studentId"/>
+        <result column="last_browse_date" property="lastBrowseDate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, group_name, teacher_id, student_id, last_browse_date
+    </sql>
+
+</mapper>

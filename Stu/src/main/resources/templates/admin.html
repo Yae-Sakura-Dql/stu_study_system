@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员页面</title>
+
+    <link th:insert="preset.html">
+    <link rel="stylesheet" type="text/css" href="../static/css/admin.css" th:href="@{/css/admin.css}">
+</head>
+<body>
+<!--头部-->
+<div class="bg"></div>
+<ul class="layui-nav" lay-filter="">
+    <div class="head">
+        <li class="layui-nav-item">
+            <h2 class="head-name">Admin</h2>
+            <dl class="layui-nav-child">
+                <div class="head-setting">
+                    <dd><a href="#" th:href="@{/toAddAdminSetting/{role}(role='TEACHER')}">新增教师</a></dd>
+                    <dd><a href="#" th:href="@{/toAddAdminSetting/{role}(role='STUDENT')}">新增学生</a></dd>
+                    <dd><a href="#" class="log-out" th:href="@{/pre/toLogin}">退出</a></dd>
+                </div>
+            </dl>
+        </li>
+    </div>
+</ul>
+
+<div class="body">
+    <table class="layui-table" lay-even lay-skin="nob">
+
+        <tr>
+            <td>教师</td>
+        </tr>
+        <tr th:each="currentPage:${teacherBOPage.getRecords()}">
+            <td th:text="${currentPage.getNickName()}">
+
+            <td><a href="#" class="edit"
+                   th:href="@{/toAdminSetting/{role}/{id}(role='TEACHER',id=${currentPage.getId()})}">编辑</a>
+            </td>
+        </tr>
+        <tr>
+            <th class="thsize">
+                <div th:text="总页数 + ${teacherBOPage.getPages()}" th:value="${teacherBOPage.getPages()}" class="sumPage"
+                     style="white-space: normal;"></div>
+                <div th:text="当前页数 + ${teacherBOPage.getCurrent()}" th:value="${teacherBOPage.getCurrent()}"
+                     style="white-space: normal;"></div>
+                <div th:text="总数据 + ${teacherBOPage.getTotal()}" th:value="${teacherBOPage.getTotal()}"
+                     style="white-space: normal;"></div>
+            </th>
+            <th><a href="#" class="toHead" th:href="@{/toAdmin/1/1}">首页</a></th>
+            <th th:if=" ${teacherBOPage.hasPrevious() == true}"><a href="#" class="toPrevious"
+                                                                   th:href="@{/toAdmin/{teacherPageNum}/{studentPageNum}(teacherPageNum=${teacherBOPage.getCurrent()}-1,studentPageNum=${studentBOPage.getCurrent()})}">上一页</a>
+            </th>
+            <th th:if=" ${teacherBOPage.hasNext()== true}"><a href="#" class="toNext"
+                                                              th:href="@{/toAdmin/{teacherPageNum}/{studentPageNum}(teacherPageNum=${teacherBOPage.getCurrent()}+1,studentPageNum=${studentBOPage.getCurrent()})}">下一页</a>
+            </th>
+            <th><a href="#" class="toTail"
+                   th:href="@{/toAdmin/{teacherPageNum}/{studentPageNum}(teacherPageNum=${teacherBOPage.getPages()},studentPageNum=${studentBOPage.getCurrent()})}">尾页</a>
+            </th>
+        </tr>
+    </table>
+
+
+    <table class="layui-table" lay-even lay-skin="nob">
+
+        <tr>
+            <td>学生</td>
+        </tr>
+        <tr th:each="currentPage:${studentBOPage.getRecords()}">
+            <td th:text="${currentPage.getNickName()}">
+
+            <td><a href="#" class="edit"
+                   th:href="@{/toAdminSetting/{role}/{id}(role='STUDENT',id=${currentPage.getId()})}">编辑</a>
+            </td>
+        </tr>
+        <tr>
+            <th class="thsize">
+                <div th:text="总页数 + ${studentBOPage.getPages()}" th:value="${studentBOPage.getPages()}" class="sumPage"
+                     style="white-space: normal;"></div>
+                <div th:text="当前页数 + ${studentBOPage.getCurrent()}" th:value="${studentBOPage.getCurrent()}"
+                     style="white-space: normal;"></div>
+                <div th:text="总数据 + ${studentBOPage.getTotal()}" th:value="${studentBOPage.getTotal()}"
+                     style="white-space: normal;"></div>
+            </th>
+            <th><a href="#" class="toHead" th:href="@{/toAdmin/1/1}">首页</a></th>
+            <th th:if=" ${studentBOPage.hasPrevious() == true}"><a href="#" class="toPrevious"
+                                                                   th:href="@{/toAdmin/{teacherPageNum}/{studentPageNum}(teacherPageNum=${teacherBOPage.getCurrent()},studentPageNum=${studentBOPage.getCurrent()}-1)}">上一页</a>
+            </th>
+            <th th:if=" ${studentBOPage.hasNext()== true}"><a href="#" class="toNext"
+                                                              th:href="@{/toAdmin/{teacherPageNum}/{studentPageNum}(teacherPageNum=${teacherBOPage.getCurrent()},studentPageNum=${studentBOPage.getCurrent()}+1)}">下一页</a>
+            </th>
+            <th><a href="#" class="toTail"
+                   th:href="@{/toAdmin/{teacherPageNum}/{studentPageNum}(teacherPageNum=${teacherBOPage.getCurrent()},studentPageNum=${studentBOPage.getPages()})}">尾页</a>
+            </th>
+        </tr>
+    </table>
+</div>
+
+<script type=" text/javascript" src="../static/js/teacher.js" th:src="@{/js/teacher.js}"></script>
+</body>
+</html>

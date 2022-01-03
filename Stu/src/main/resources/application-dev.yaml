@@ -1,0 +1,34 @@
+#  端口号
+server:
+  port: 8080
+spring:
+  application:
+    name: Stu
+  datasource:
+    # 数据库驱动：
+    driver-class-name: com.mysql.jdbc.Driver
+    #  ## 数据库连接地址
+    url: jdbc:mysql://localhost:3306/stu_system?serverTimezone=UTC
+    #  # 数据库用户名&密码：
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  #    redis配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    lettuce:
+      shutdown-timeout: 1000ms
+      pool:
+        #        最大连接数
+        max-active: 8
+        #        最长等待时间
+        max-wait: 10000ms
+        #        最大连接数
+        max-idle: 8
+        #        最小连接数
+        min-idle: 0
+
+
+

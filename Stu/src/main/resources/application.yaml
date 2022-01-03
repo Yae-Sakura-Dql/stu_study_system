@@ -1,0 +1,78 @@
+spring:
+  profiles:
+    #指定读取配置文件:dev(开发环境),test(测试环境),prod(生产环境)
+    active: prod
+
+  application:
+    name: Stu
+
+  datasource:
+    #配置Druid相关
+    druid:
+      #开启druid
+      stat-view-servlet:
+        #        开启
+        enabled: true
+        #        登录Druid用户名
+        login-username: root
+        login-password: 123456
+
+      #      过滤路径
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions:
+
+      #      过滤器;防火墙
+      filters: stat,wall
+
+      filter:
+        stat:
+          connection-stack-trace-enable: true
+          log-slow-sql: true
+          slow-sql-millis: 1000
+
+        wall:
+          enabled: true
+          config:
+            update-allow: true
+
+      #            Spring监控(底层方法)
+      aop-patterns: com.dql.stu.*
+
+
+  thymeleaf:
+    # 开启模板缓存（默认值： true ）
+    cache: false
+    # 检查模板是否存在，然后再呈现
+    check-template: true
+    # 检查模板位置是否正确（默认值 :true ）
+    check-template-location: true
+
+    # 开启 MVC Thymeleaf 视图解析（默认值： true ）
+    enabled: true
+    #Content-Type 的值（默认值： text/html ）
+    servlet:
+      content-type: text/html
+      # 模板编码
+    encoding: UTF-8
+
+    # 要被排除在解析之外的视图名称列表，⽤逗号分隔
+    excluded-view-names:
+    # 要运⽤于模板之上的模板模式。另⻅ StandardTemplate-ModeHandlers( 默认值： HTML5)
+    mode: HTML
+    # 在构建 URL 时添加到视图名称前的前缀（默认值： classpath:/templates/ ）
+    prefix: classpath:/templates/
+
+    # 在构建 URL 时添加到视图名称后的后缀（默认值： .html ）
+    suffix: .html
+
+#      mybatis-plus配置
+mybatis-plus:
+  #  xml映射文件
+  mapper-locations: classpath*:/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+

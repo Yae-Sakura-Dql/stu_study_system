@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>信息修改</title>
+    <link th:insert="preset.html">
+    <link rel="stylesheet" href="../static/css/admin-setting.css" th:href="@{/css/admin-setting.css}">
+</head>
+<body>
+<!--头部-->
+<div class="auth">
+    <div class="title-info">
+        <div class="bg"></div>
+        <img class="tb"
+             src="https://ncstatic.clewm.net/rsrc/2020/1016/02/4757e4910cb527fc040d019a93ded74f.png?x-oss-process=image/resize,w_750/format,gif/sharpen,100/quality,Q_80/interlace,1/auto-orient,1"
+             alt="书籍">
+        <h2 class="title">信息修改</h2>
+    </div>
+    <form class="layui-form">
+        <label>
+            <input type="text" class="id" th:value="${teacherStudentTO.getId()}" style="display: none">
+        </label>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名:</label>
+            <div class="layui-input-inline">
+                <input type="text" th:value="${teacherStudentTO.getUsername()}" class="username layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码:</label>
+            <div class="layui-input-inline">
+                <input type="text" th:value="${teacherStudentTO.getPassword()}" class="password layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色:</label>
+            <div class="layui-input-inline">
+                <input type="text" th:value="${teacherStudentTO.getUserRoleDict()}" class="userRoleDict layui-input"
+                       readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名:</label>
+            <div class="layui-input-inline">
+                <input type="text" th:value="${teacherStudentTO.getNickName()}" class="nickName layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item" th:style="${teacherStudentTO.getUserRoleDict()=='STUDENT'?'':'display:none'}">
+            <label class="layui-form-label">班级:</label>
+            <div class="layui-input-inline">
+                <input type="text" th:value="${teacherStudentTO.getClassroom()}" class="classroom layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" th:style="${teacherStudentTO.getUserRoleDict()=='STUDENT'?'':'display:none'}">
+            <label class="layui-form-label">选择教师：</label>
+            <div class="layui-input-block">
+                <select class="selectedTeacher">
+                    <option th:each="teacherBO:${teacherStudentTO.getTeacherBOList()}"
+                            th:text="${teacherBO.getNickName()}"
+                            th:value="${teacherBO.getId()}"
+                            th:selected="${teacherBO.getId()==teacherStudentTO.getTeacherId() ? true:false}"></option>
+                </select>
+            </div>
+        </div>
+    </form>
+    <div class="cen">
+        <div class="layui-form-item">
+            <label class="la layui-form-label">
+
+                <button class="layui-btn layui-btn-radius submit">提交</button>
+            </label>
+            <label class="la layui-form-label">
+                <button class="layui-btn layui-btn-radius goBack">返回</button>
+            </label>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../static/js/admin-setting.js" th:src="@{/js/admin-setting.js}"></script>
+</body>
+</html>

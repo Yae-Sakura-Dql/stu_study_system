@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>我的学生</title>
+
+    <link th:insert="preset.html">
+    <link rel="stylesheet" href="../static/css/my-student.css" th:href="@{/css/my-student.css}">
+</head>
+<body>
+<!--头部-->
+<div class="bg"></div>
+<div class="body">
+    <table class="layui-table" lay-even lay-skin="nob">
+        <tr>
+            <th>姓名</th>
+            <th>班级</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="studentBO:${studentBOList}">
+            <td th:text="${studentBO.getNickName()}">
+            <td th:text="${studentBO.getClassroom()}">
+            <td><a th:href="@{/toPersonChatRecord/{id}(id=${studentBO.getId()})}">聊天</a></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><a href="#" th:href="@{/toTeacher/1}">返回</a></td>
+        </tr>
+    </table>
+</div>
+
+<script type=" text/javascript" src="../static/js/my-student.js" th:src="@{/js/my-student.js}"></script>
+</body>
+</html>

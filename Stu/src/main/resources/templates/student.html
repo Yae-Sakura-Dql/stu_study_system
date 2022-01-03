@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生页面</title>
+
+    <link th:insert="preset.html">
+    <link rel="stylesheet" type="text/css" href="../static/css/student.css" th:href="@{/css/student.css}">
+</head>
+<body>
+<!--头部-->
+<div class="bg"></div>
+<ul class="layui-nav" lay-filter="">
+    <div class="head">
+        学生:
+        <li class="layui-nav-item">
+            <h1 th:text="${studentBO.getNickName()}">学生名</h1>
+            <dl class="layui-nav-child">
+                <dd><a href="#"
+                       th:href="@{/toMyClassmates/{studentId}(studentId=${studentBO.getId()})}">我的同学</a></dd>
+                <dd><a href="#" class="change-data" th:value="${studentBO}" th:href="@{/toStudentSetting}">更改信息</a></dd>
+                <dd><a href="#" class="log-out" th:href="@{/pre/toLogin}">退出</a></dd>
+            </dl>
+        </li>
+        <label style="margin-left: 30px;">教师：</label>
+        <li class="layui-nav-item">
+            <h1 th:text="${teacherBO.getNickName()}">教师名</h1>
+        </li>
+    </div>
+</ul>
+
+<div class="body">
+    <table class="layui-table" lay-even lay-skin="nob">
+
+        <tr th:each="currentPage:${page.getRecords()}">
+            <td th:text="${currentPage.getGroupName()}">
+            <td>
+                <a th:href="@{/toGroupChatRecord/{groupName}(groupName=${currentPage.getGroupName()})}">进入聊天</a>
+            </td>
+        </tr>
+        <tr>
+            <th class="thsize">
+                <div th:text="总页数 + ${page.getPages()}" th:value="${page.getPages()}" class="sumPage"
+                     style="white-space: normal;"></div>
+                <div th:text="当前页数 + ${page.getCurrent()}" th:value="${page.getCurrent()}" class="currentPage"
+                     style="white-space: normal;"></div>
+                <div th:text="总数据 + ${page.getTotal()}" th:value="${page.getTotal()}"
+                     style="white-space: normal;"></div>
+            </th>
+            <th><a href="#" class="toHead" th:href="@{/toStudent/1}">首页</a></th>
+            <th th:if=" ${page.hasPrevious() == true}"><a href="#" class="toPrevious"
+                                                          th:href="@{/toStudent/{num}(num=${page.getCurrent()}-1)}">上一页</a>
+            </th>
+            <th th:if=" ${page.hasNext()== true}"><a href="#" class="toNext"
+                                                     th:href="@{/toStudent/{num}(num=${page.getCurrent()}+1)}">下一页</a>
+            </th>
+            <th><a href="#" class="toTail" th:href="@{/toStudent/{num}(num=${page.getPages()})}">尾页</a></th>
+        </tr>
+    </table>
+</div>
+
+<script type=" text/javascript" src="../static/js/student.js" th:src="@{/js/student.js}"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>私聊页面</title>
+
+    <link th:insert="preset.html">
+    <link rel="stylesheet" type="text/css" href="../static/css/person-chat-record.css" th:href="@{/css/person-chat-record.css}">
+</head>
+<body>
+<!--头部-->
+<div class="bg"></div>
+<ul class="layui-nav" lay-filter="">
+    <li class="layui-nav-item">
+<a href="#" th:href="@{/toMyStudent/{teacherId}(teacherId=${userBO.getId()})}"
+   th:style="${userBO.getUserRoleDict()=='TEACHER'?'':'display:none'}">退出</a>
+<a href="#" th:href="@{/toMyClassmates/{studentId}(studentId=${userBO.getId()})}"
+   th:style="${userBO.getUserRoleDict()=='STUDENT'?'':'display:none'}">退出</a>
+    </li>
+</ul>
+
+<div class="body">
+    <div class="layui-card">
+    <div class="layui-card-header" style="font-size: 30px; text-align: center">聊天</div>
+    <div class="layui-card-body">
+        <div th:each="chatRecord:${chatRecordBOS}">
+            <div th:text="${chatRecord.getCreateTime()}" style="text-align:center; font-size: 12px;"></div>
+            <div>
+            <div th:text="${chatRecord.getReceiveId()==id?'':chatRecord.getSendName()}"></div>
+                <div th:text="${chatRecord.getReceiveId()==id?'':chatRecord.getChatText()}" style="font-size: 20px"></div>
+        </div>
+            <div>
+                <div th:text="${chatRecord.getReceiveId()==id?chatRecord.getSendName():''}" style="text-align:right;"></div>
+                <div th:text="${chatRecord.getReceiveId()==id?chatRecord.getChatText():''}" style="text-align:right; font-size: 20px" ></div>
+            </div>
+        </div>
+        <div class="layui-input-inline la">
+            <input type="text" class="record">
+            <input type="button" value="发送" class="send">
+            <input type="text" class="information" th:value="${id}" th:id="${userBO.getId()}"
+                   style="display: none">
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script type=" text/javascript" src="../static/js/person-chat-record.js" th:src="@{/js/person-chat-record.js}"></script>
+</body>
+</html>
